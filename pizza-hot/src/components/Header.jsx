@@ -1,8 +1,13 @@
+import { useContext } from "react";
+import { ThemeContext } from "../contexts/ThemeContext.jsx";
+
 export default function Header() {
+
+  const { color, setColor } = useContext(ThemeContext);
 
   return (
     <header>
-      <nav className="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
+      <nav className={`navbar navbar-expand bg-${color} border-bottom border-body`} data-bs-theme="dark">
         <div className="container">
           <a href="#" className="navbar-brand">
             🍕 Pizza Hot
