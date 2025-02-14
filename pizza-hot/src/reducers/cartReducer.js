@@ -9,8 +9,7 @@ export default function cartReducer(state, action) {
       const existingItem = state.items[index];
       const updatedItem = {...existingItem, quantity: existingItem.quantity + 1};
       updatedItems[index] = updatedItem;
-    }
-    else {
+    } else {
       updatedItems.push({ ...action.item, quantity: 1 });
     }
     

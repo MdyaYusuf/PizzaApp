@@ -14,6 +14,7 @@ function App() {
       <ThemeSelector />
       <div className="container my-4">
         <PizzaList />
+        <Cart />
       </div>
     </div>
   );
