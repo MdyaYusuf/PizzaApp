@@ -1,9 +1,14 @@
 import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext.jsx";
+import { CartContext } from "../contexts/CartContext.jsx";
 
 export default function Header() {
 
-  const { color, setColor } = useContext(ThemeContext);
+  const { color } = useContext(ThemeContext);
+  const { items } = useContext(CartContext);
+  const totalCartItems = items.reduce((total, item) => {
+    return total + item.quantity;
+  }, 0);
 
   return (
     <header>
@@ -14,7 +19,7 @@ export default function Header() {
           </a>
           <button className="btn btn-dark">
             <i className="bi bi-cart3"></i>
-            <span className="ms-2">(0)</span>
+            <span className="ms-2">({totalCartItems})</span>
           </button>
         </div>
       </nav>
