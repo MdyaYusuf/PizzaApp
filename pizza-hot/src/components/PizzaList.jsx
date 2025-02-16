@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react";
 import Pizza from "./Pizza";
+import useFetch from "../hooks/useFetch";
+
+const config = {
+  method: "GET"
+};
 
 export default function PizzaList() {
 
-  const [loadedPizzas, setLoadedPizzas] = useState([]);
+  const {data, isLoading, error, } = useFetch("http://localhost:3000/pizzas", config, []);
 
-  useEffect(() => {
+  if (isLoading) {
+    return (
+      <div className="alert alert-warning">Yükleniyor...</div>
+    );
+  }
 
-    async function getPizzaList() {
-      const response = await fetch("http://localhost:3000/pizzas");
-
-      if (!response.ok) {
-        // error log
-      }
-
-      const pizzas = await response.json();
-      setLoadedPizzas(pizzas);
-    }
-
-    getPizzaList();
-  }, [])
+  if (error) {
+    return (
+      <div className="alert alert-danger">{error}</div>
+    );
+  }
 
   return (
     <div className="pizza-list">

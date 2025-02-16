@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import cartReducer from "../reducers/CartReducer";
+import cartReducer from "../reducers/cartReducer";
 
 export const CartContext = createContext();
 
@@ -9,28 +9,23 @@ export function CartProvider({ children }) {
     items: []
   });
 
-  // add item to cart
   function addItem(item) {
     dispatch({type: "ADD_ITEM", item})
   }
-
-  // update cart items
-  function updateItem() {
-
+  
+  function deleteItem(id) {
+    dispatch({ type: "REMOVE_ITEM", id })
   }
 
-  // delete cart item
-  function deleteItem() {
-
-  }
-  // clear all items
   function clearAll() {
-
+    dispatch({ type: "CLEAR_CART" });
   }
 
   const cartContext = {
     items: cart.items,
-    addItem
+    addItem,
+    deleteItem,
+    clearAll
   }
 
   return (

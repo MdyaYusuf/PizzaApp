@@ -3,6 +3,8 @@ import Header from "./components/Header";
 import PizzaList from "./components/PizzaList";
 import ThemeSelector from "./components/ThemeSelector.jsx";
 import { ThemeContext, ThemeProvider } from "./contexts/ThemeContext.jsx";
+import Cart from "./components/Cart.jsx";
+import Checkout from "./components/Checkout.jsx";
 
 function App() {
 
@@ -15,6 +17,7 @@ function App() {
       <div className="container my-4">
         <PizzaList />
         <Cart />
+        <Checkout />
       </div>
     </div>
   );
